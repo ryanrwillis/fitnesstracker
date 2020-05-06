@@ -1,4 +1,4 @@
-import validator from 'validator'
+const validator = require('validator')
 const is_empty = require('is-empty');
 
 module.exports = function validateLoginInput(data){
