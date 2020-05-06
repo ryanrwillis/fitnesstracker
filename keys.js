@@ -1,3 +1,3 @@
 module.exports = {
-    MONGO_URI: 'Mongo URI Here'
+    MONGO_URI: 'goog'
 }
