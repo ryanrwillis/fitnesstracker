@@ -17,6 +17,10 @@ const UserSchema = new Schema({
     date: {
         type: Date,
         default: Date.now
+    },
+    items: {
+        type: JSON,
+        default: {}
     }
 })
 
