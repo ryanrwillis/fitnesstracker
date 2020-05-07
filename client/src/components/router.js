@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Landing from "./pages/landing";
+import Home from "./pages/home";
 
 class Router extends Component {
     constructor(props) {
@@ -8,12 +9,17 @@ class Router extends Component {
             index: 'landing' // Start on landing page
         }
     }
+    upstreamDataChange = (data) =>{
+        this.setState(data)
+    }
     render() {
         switch(this.state.index){
             case 'landing':
-                return <Landing/>
+                return <Landing callback={this.upstreamDataChange}/>;
+            case 'home':
+                return<Home />
             default:
-                return <div><h1>Sorry, an error has occurred :(</h1></div>
+                return <div><h1>Sorry, an error has occurred :(</h1></div>;
         }
     }
 }

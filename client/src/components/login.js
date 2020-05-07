@@ -4,7 +4,6 @@ const axios = require('axios')
 const qs = require('querystring')
 
 class Login extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -82,8 +81,10 @@ class Login extends Component {
             },
             data: qs.stringify(loginData)
         }).then(res =>{
-            console.log(res.data)
-            // TODO
+            this.props.callback({
+                token: res.token,
+                index: 'home'
+            });
         }).catch(error =>{
             if(error.hasOwnProperty('response')) {
                 this.setState({
@@ -152,7 +153,6 @@ class Login extends Component {
 
     register = ()=>{
         const { errors } = this.state;
-        console.log('errors', errors['email']);
         return(
             <div className=''>
                 <h5 style={{paddingBottom: '20px'}}><b>Create an Account</b></h5>
@@ -168,8 +168,8 @@ class Login extends Component {
                                 invalid: errors.name
                             })}
                         />
-                        <label className='active' style={{paddingBottom: '40px'}} htmlFor="name">Your Name</label>
-                        <span className="red-text">{errors.name}</span>
+                        <label className='active' htmlFor="name">Your Name</label>
+                        <span className="red-text" style={{fontSize: '10px'}}>{errors.name}</span>
                     </div>
                     <div className="input-field col s12">
                         <input
@@ -183,7 +183,7 @@ class Login extends Component {
                             })}
                         />
                         <label className='active' htmlFor="email">Your Email Address</label>
-                        <span className="red-text">{errors.email}</span>
+                        <span className="red-text" style={{fontSize: '10px'}}>{errors.email}</span>
                     </div>
                     <div className="input-field col s12">
                         <input
@@ -197,7 +197,7 @@ class Login extends Component {
                             })}
                         />
                         <label className='active' htmlFor="password">Password</label>
-                        <span className="red-text">{errors.password}</span>
+                        <span className="red-text" style={{fontSize: '10px'}}>{errors.password}</span>
                     </div>
                     <div className="input-field col s12">
                         <input
@@ -211,7 +211,7 @@ class Login extends Component {
                             })}
                         />
                         <label className='active' htmlFor="password">Confirm Password</label>
-                        <span className="red-text">{errors.password2}</span>
+                        <span className="red-text" style={{fontSize: '10px'}}>{errors.password2}</span>
                     </div>
                     <button
                         style={{

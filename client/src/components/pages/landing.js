@@ -2,6 +2,10 @@ import React, {Component} from 'react';
 import Login from '../login'
 
 class Landing extends Component {
+    updateRouterState = (data) =>{
+        this.props.callback(data);
+    }
+
     render() {
         return (
             <div style ={{height: '100vh'}} className='container row valign-wrapper'>
@@ -11,7 +15,7 @@ class Landing extends Component {
                         </h4>
                     </div>
                     <div className='col s6 center-align'>
-                        <Login/>
+                        <Login callback={this.updateRouterState}/>
                     </div>
             </div>
         );
