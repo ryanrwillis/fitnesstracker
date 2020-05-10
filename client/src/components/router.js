@@ -17,7 +17,7 @@ class Router extends Component {
             case 'landing':
                 return <Landing callback={this.upstreamDataChange}/>;
             case 'home':
-                return<Home />
+                return<Home token={this.state.token}/>
             default:
                 return <div><h1>Sorry, an error has occurred :(</h1></div>;
         }

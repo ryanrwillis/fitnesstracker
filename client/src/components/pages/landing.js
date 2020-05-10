@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Login from '../login'
 
 class Landing extends Component {
+
     updateRouterState = (data) =>{
         this.props.callback(data);
     }

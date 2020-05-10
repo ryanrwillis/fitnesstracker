@@ -80,9 +80,9 @@ class Login extends Component {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
             data: qs.stringify(loginData)
-        }).then(res =>{
+        }).then( res =>{
             this.props.callback({
-                token: res.token,
+                token: res.data.token,
                 index: 'home'
             });
         }).catch(error =>{

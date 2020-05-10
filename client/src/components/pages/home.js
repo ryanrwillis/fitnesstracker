@@ -1,19 +1,59 @@
 import React, {Component} from 'react';
 import Navbar from "../navbar";
+import AddExercise from "../addExercise";
+import ExerciseCard from "../exerciseCard";
+const axios = require('axios')
 
 class Home extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            workouts: []
+        }
+    }
+
+    componentDidMount() {
+        this.getWorkouts();
+    }
+
+    getWorkouts = () =>{
+        axios({
+            method: 'get',
+            url: '/api/secure/workout/get-all',
+            headers: {
+                'Authorization': this.props.token
+            }
+        }).then(res =>{
+            this.setState({
+                workouts: res.data
+            })
+        }).catch(error =>{
+            // TODO
+        })
+    }
+
+    getWorkoutCards = () =>{
+        const cards = this.state.workouts.map(workout =>
+            <ExerciseCard workout={workout}/>
+        )
+        return(
+            <div>
+                {cards}
+            </div>
+        );
+    }
+
     render() {
         return (
             <div>
                 <Navbar />
-                <div className='container'>
-                    <div className='row'>
-                        <div className='col s6 card'>
-                            <h1 className='center-align'>Add Workout</h1>
+                <div className='container col s10 offset-s1'  >
+                    <div className='row' >
+                        <div className='col s12 center'>
+                            <AddExercise token={this.props.token}/>
                         </div>
-                        <div className='col s6'>
-                            <h1 className='center-align'>Add Workout</h1>
-                        </div>
+                        {this.getWorkoutCards()}
                     </div>
                 </div>
             </div>
