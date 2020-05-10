@@ -47,7 +47,6 @@ class AddExercise extends Component {
 
     addExercise = (event) =>{
         event.preventDefault();
-        console.log(this.props.token)
         axios({
             method: 'post',
             url: '/api/secure/workout/add',
@@ -57,11 +56,13 @@ class AddExercise extends Component {
             },
             data: qs.stringify({name: this.state.name})
         }).then(res =>{
-            this.setState({
-                errors: {}
+            this.setState( {
+                collapsed: true,
+                name: '',
+                errors: {},
             })
+            this.props.callback();
             //TODO : callback
-
         }).catch(error =>{
             if(error.hasOwnProperty('response')){
                 this.setState({

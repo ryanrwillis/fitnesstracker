@@ -35,7 +35,7 @@ class Home extends Component {
 
     getWorkoutCards = () =>{
         const cards = this.state.workouts.map(workout =>
-            <ExerciseCard workout={workout}/>
+            <ExerciseCard key={workout._id} workout={workout} callback={this.getWorkouts} token={this.props.token}/>
         )
         return(
             <div>
@@ -51,7 +51,7 @@ class Home extends Component {
                 <div className='container col s10 offset-s1'  >
                     <div className='row' >
                         <div className='col s12 center'>
-                            <AddExercise token={this.props.token}/>
+                            <AddExercise token={this.props.token} callback={this.getWorkouts}/>
                         </div>
                         {this.getWorkoutCards()}
                     </div>

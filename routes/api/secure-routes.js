@@ -8,6 +8,7 @@ const User = require('../../models/User');
 
 // Validation Functions
 const validateAddWorkout = require('../../validation/addWorkout');
+const validateWorkoutEntry = require('../../validation/workoutEntry')
 
 // @route get api/secure/profile
 // @desc get a users profile details post-login
@@ -38,7 +39,8 @@ router.post('/workout/add', (req, res) => {
     }
     Workout.create({
         name: req.body.name,
-        userID: req.user._id
+        userID: req.user._id,
+        history: []
     }).then( (workout) =>{
         res.json({
             success: true,
@@ -81,6 +83,34 @@ router.delete('/workout/remove', (req, res)=>{
     }).catch( error =>{
         res.status(400).json(error)
     })
+});
+
+// @route post api/secure/workout/update
+// @desc update a workout history by it's id, params: body.id, entry
+// @access Secured
+
+router.post('/workout/update', (req, res) => {
+    const {errors, isValid} = validateWorkoutEntry(req.body);
+    if(!isValid){
+        return res.status(400).json(
+            errors
+        )
+    }
+
+    Workout.findByIdAndUpdate(req.body['id'], {
+        "$push": {
+            'history': {
+                sets: req.body['sets'],
+                reps: req.body['reps'],
+                date: new Date(),
+            }
+        }
+    }).then(result =>{
+        res.json(result)
+    }).catch( error =>{
+        res.status(400).json(error)
+    })
+
 });
 
 module.exports = router;

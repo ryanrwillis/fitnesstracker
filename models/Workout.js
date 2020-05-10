@@ -16,7 +16,7 @@ const WorkoutSchema = new Schema({
     },
     history: {
         type: JSON,
-        default: {}
+        default: []
     }
 });
 
