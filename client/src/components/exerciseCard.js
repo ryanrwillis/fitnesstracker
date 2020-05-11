@@ -44,9 +44,9 @@ class ExerciseCard extends Component {
         }).then(res =>{
             this.props.callback();
             this.setState({
-                // reps:'',
-                // sets: '',
-                // weight: '',
+                reps:'',
+                sets: '',
+                weight: '',
                 errors: {},
                 expanded: false
             })

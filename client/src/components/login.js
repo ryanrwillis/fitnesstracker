@@ -13,6 +13,8 @@ class Login extends Component {
             email: '',
             password: '',
             password2: '',
+            'login-email': '',
+            'login-password': ''
         }
     }
 
