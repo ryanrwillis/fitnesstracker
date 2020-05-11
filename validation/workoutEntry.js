@@ -6,6 +6,7 @@ module.exports = function validateWorkoutEntry(data){
     // If a field is empty, replace it with an empty string for validator library compatibility
     data.sets = is_empty(data.sets) ? "" : data.sets;
     data.reps = is_empty(data.reps) ? "" : data.reps;
+    data.weight = is_empty(data.weight) ? "" : data.weight;
 
     // Sets
     if(validator.isEmpty(data.sets)){
@@ -23,6 +24,15 @@ module.exports = function validateWorkoutEntry(data){
         errors['reps'] = "Reps must be an integer value"
     } else if(parseInt(data.reps) < 0){
         errors['reps'] = "Reps must be positive"
+    }
+
+    // Weight
+    if(validator.isEmpty(data.weight)){
+        errors['weight'] = "Weight field required"
+    } else if(!validator.isInt(data.weight)){
+        errors['weight'] = "Weight must be an integer value"
+    } else if(parseInt(data.weight) < 0){
+        errors['weight'] = "Weight must be positive"
     }
 
     return{

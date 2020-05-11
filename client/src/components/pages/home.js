@@ -34,7 +34,9 @@ class Home extends Component {
     }
 
     getWorkoutCards = () =>{
-        const cards = this.state.workouts.map(workout =>
+        const workouts = this.state.workouts;
+
+        const cards = workouts.map(workout =>
             <ExerciseCard key={workout._id} workout={workout} callback={this.getWorkouts} token={this.props.token}/>
         )
         return(

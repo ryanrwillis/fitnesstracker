@@ -10,10 +10,11 @@ class Landing extends Component {
     render() {
         return (
             <div style ={{height: '100vh'}} className='container row valign-wrapper'>
-                    <div className='col s6 center-align'>
-                        <h4>
-                            Fitness Tracker
-                        </h4>
+                    <div className='col s4 offset-s1 center-align gradient-div'>
+                        <h1 className='white-text'>
+                            MERN Fitness Tracker
+                        </h1>
+                        <h3 className='white-text'>with graphs!</h3>
                     </div>
                     <div className='col s6 center-align'>
                         <Login callback={this.updateRouterState}/>

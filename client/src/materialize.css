@@ -9064,6 +9064,10 @@ input[type=range]::-ms-thumb {
   padding: 0 20px;
 }
 
+.gradient-div {
+  background-image: linear-gradient(to right, #44dde5, #75b6eb);
+}
+
 /* Media Queries */
 @media only screen and (min-width: 601px) {
   .timepicker-modal {

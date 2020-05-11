@@ -109,7 +109,7 @@ class Login extends Component {
                             id="login-email"
                             type="email"
                         />
-                        <label className='active' htmlFor="email">Your Email Address</label>
+                        <label className='active' htmlFor="login-email">Your Email Address</label>
                     </div>
                     <div className="input-field col s12">
                         <input

@@ -102,6 +102,7 @@ router.post('/workout/update', (req, res) => {
             'history': {
                 sets: req.body['sets'],
                 reps: req.body['reps'],
+                weight: req.body['weight'],
                 date: new Date(),
             }
         }
