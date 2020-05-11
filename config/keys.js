@@ -1,4 +1,4 @@
 module.exports = {
-    MONGO_URI: `mongodb+srv://fitness-node:fitness-node@rwillis-eqr43.mongodb.net/test?retryWrites=true&w=majority`,
-    secretOrKey: 'secret'
+    MONGO_URI: `Your Mongo Uri Here`,
+    secretOrKey: 'Your Secret Key Here'
 }
