@@ -1,7 +1,14 @@
 # MERN Stack Fitness Tracker
 
 ## Description
+A simple react app built on the MERN stack that allows users to:
+- Register, Login (securely, passwords hashed with bcrypt)
+- Create/Delete Exercises
+- Add workout data to exercises and graph it
 
+All validation is done server side and the validation functions can be found within the validation folder within the root.
+
+In the API folder, we have all of our express routes. All secured routes are built on a JWT-Passport system. 
 ## Demo
 If you don't want to deploy this to demo it (understandably), here is a quick collection of demo gifs to show off some of the features.
 
@@ -25,3 +32,5 @@ UI is designed to be clean and usable on any size of device.
 ![Mobile Demo](demo/mobile.gif)
 
 ## Deployment
+
+Within the config/keys folder is where all of the credentials live. If you wish to deploy this app or build something on top of it, all you need is a mongo instance (free small databases available on atlas if you don't want to host it yourself). You should also change the secret or key which is used for password hashing. 
